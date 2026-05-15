@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dogakdobvi6ls"]
+
+[ext_resource type="Texture2D" uid="uid://dyk2xymsrdxvk" path="res://inventory/holl.jpg" id="1_r3g4p"]
+[ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://scene/player_test.tscn" id="2_k6bhc"]
+[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://scene/portal.tscn" id="3_r3g4p"]
+[ext_resource type="PackedScene" uid="uid://dc4jfd01kh8dv" path="res://scene/apple.tscn" id="4_k6bhc"]
+[ext_resource type="Texture2D" uid="uid://bstj5qsw46h8h" path="res://sprites/Red-Circle-Transparent.png" id="5_xncuo"]
+[ext_resource type="Script" uid="uid://djtm0g8ovx1xy" path="res://inventory/item_data.gd" id="6_w0h0x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xncuo"]
+size = Vector2(7.610489, 7.3191495)
+
+[sub_resource type="Resource" id="Resource_ts2qu"]
+script = ExtResource("6_w0h0x")
+name = "Яблоко"
+icon = ExtResource("5_xncuo")
+is_stackable = true
+max_stack_size = 10
+metadata/_custom_type_script = "uid://djtm0g8ovx1xy"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6bhc"]
+size = Vector2(233, 263.48425)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3g4p"]
+size = Vector2(1164, 45)
+
+[node name="room1" type="Node2D" unique_id=903177662]
+
+[node name="Photo20260315175153" type="Sprite2D" parent="." unique_id=1145691021]
+position = Vector2(577, 325)
+scale = Vector2(0.89453125, 0.71594685)
+texture = ExtResource("1_r3g4p")
+
+[node name="player test" parent="." unique_id=18880484 instance=ExtResource("2_k6bhc")]
+position = Vector2(407, 87)
+
+[node name="portal" parent="." unique_id=772575493 instance=ExtResource("3_r3g4p")]
+position = Vector2(682, 337)
+scene = "room_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal" unique_id=61487954]
+position = Vector2(58, 33.03418)
+rotation = -3.1415925
+scale = Vector2(4.597908, -5.1825204)
+shape = SubResource("RectangleShape2D_xncuo")
+
+[node name="apple" parent="." unique_id=97196546 instance=ExtResource("4_k6bhc")]
+position = Vector2(782, 395)
+item_data = SubResource("Resource_ts2qu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=82712180]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1194771578]
+position = Vector2(577.5, 73.877495)
+scale = Vector2(0.94776964, -2.0339575)
+shape = SubResource("RectangleShape2D_k6bhc")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=319405878]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2" unique_id=1629981954]
+scale = Vector2(0.9979344, 0.9588078)
+polygon = PackedVector2Array(45, 500, 180, 450, 250, 380, 303, 430, 355, 420, 400, 350, 450, 400, 490, 358, 490, 6, 21, 3)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=611371064]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3" unique_id=225520082]
+scale = Vector2(1.0246594, 0.9866733)
+polygon = PackedVector2Array(711, 7, 635, 350, 680, 380, 725, 300, 765, 400, 1091, 500, 1121, 621, 1137, 259)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=297315801]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=162533582]
+position = Vector2(580, 613)
+shape = SubResource("RectangleShape2D_r3g4p")
+
+[node name="portal2" parent="." unique_id=1181492427 instance=ExtResource("3_r3g4p")]
+position = Vector2(817, 345)
+scene = "bedroom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal2" unique_id=1752233103]
+position = Vector2(222, 187.99998)
+rotation = -3.1415925
+scale = Vector2(4.597908, -5.1825204)
+shape = SubResource("RectangleShape2D_xncuo")
+
+[node name="portal3" parent="." unique_id=222247301 instance=ExtResource("3_r3g4p")]
+position = Vector2(682, 337)
+scene = "kitchen"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal3" unique_id=242918043]
+position = Vector2(-274, 43)
+rotation = -3.1415925
+scale = Vector2(4.597908, -5.1825204)
+shape = SubResource("RectangleShape2D_xncuo")
+
+[node name="portal4" parent="." unique_id=389458785 instance=ExtResource("3_r3g4p")]
+position = Vector2(682, 337)
+scene = "bathroom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal4" unique_id=544836138]
+position = Vector2(-433, 70)
+rotation = -3.1415925
+scale = Vector2(4.597908, -5.1825204)
+shape = SubResource("RectangleShape2D_xncuo")

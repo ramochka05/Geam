@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://u7tcsdm0bwaw"]
+
+[ext_resource type="Script" uid="uid://ctw3spod3sqri" path="res://scene/inventory_ui.gd" id="1_d68m3"]
+
+[node name="InventoryUI" type="CanvasLayer" unique_id=753114972]
+script = ExtResource("1_d68m3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1616145289]
+offset_left = 362.0
+offset_top = 556.0
+offset_right = 799.0
+offset_bottom = 638.0
+color = Color(0.07450981, 0.06666667, 0.011764706, 0.6039216)
+
+[node name="ItemList" type="ItemList" parent="ColorRect" unique_id=16170044]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 428.0
+offset_bottom = 76.0
+theme_override_constants/v_separation = 2
+theme_override_font_sizes/font_size = 10
+max_columns = 5
+same_column_width = true
+fixed_column_width = 100
+icon_mode = 0
+fixed_icon_size = Vector2i(32, 32)

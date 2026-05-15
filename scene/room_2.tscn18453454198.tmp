@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c73ipmd5y7xx3"]
+
+[ext_resource type="Texture2D" uid="uid://cjm3av3s4t6yw" path="res://sprites/photo_2026-03-15_17-52-02.jpg" id="1_1sw2l"]
+[ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://scene/player_test.tscn" id="2_x2xpc"]
+[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://scene/portal.tscn" id="3_oc683"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgeml"]
+size = Vector2(62, 330)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sw2l"]
+size = Vector2(1056.25, 172)
+
+[node name="room2" type="Node2D" unique_id=1112863121]
+
+[node name="Photo20260315175202" type="Sprite2D" parent="." unique_id=464612286]
+position = Vector2(578.00006, 325.00003)
+scale = Vector2(0.8993928, 0.7191455)
+texture = ExtResource("1_1sw2l")
+
+[node name="player test" parent="." unique_id=505350250 instance=ExtResource("2_x2xpc")]
+position = Vector2(-250, -50)
+scale = Vector2(1.8589735, 1.7647353)
+
+[node name="portal" parent="." unique_id=772575493 instance=ExtResource("3_oc683")]
+scene = "hous"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal" unique_id=1630880850]
+position = Vector2(47, 437)
+shape = SubResource("RectangleShape2D_kgeml")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1908745052]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=821793602]
+position = Vector2(617, 301)
+shape = SubResource("RectangleShape2D_1sw2l")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1312762941]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=2096278290]
+position = Vector2(605, 708)
+shape = SubResource("RectangleShape2D_1sw2l")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=639212659]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1007504308]
+position = Vector2(1424, 664.00006)
+rotation = 0.6318092
+shape = SubResource("RectangleShape2D_1sw2l")
