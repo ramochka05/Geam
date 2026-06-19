@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dwxxue464ng7a"]
+
+[ext_resource type="Script" uid="uid://btc5fgq7itedv" path="res://assets/player/player.gd" id="1_mnirw"]
+[ext_resource type="Texture2D" uid="uid://dgq3hify1vg1b" path="res://assets/player/player_sprite.png" id="2_rac3s"]
+[ext_resource type="Script" uid="uid://m2fop5hgvsok" path="res://assets/inventory/inventory.gd" id="3_rac3s"]
+[ext_resource type="PackedScene" uid="uid://u7tcsdm0bwaw" path="res://assets/inventory/InventoryUI.tscn" id="4_tnfoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xys6k"]
+size = Vector2(29.5, 67.5)
+
+[node name="player_test" type="CharacterBody2D" unique_id=505350250]
+position = Vector2(-31, -29)
+script = ExtResource("1_mnirw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=66812850]
+position = Vector2(258.12497, 312.625)
+scale = Vector2(0.17113549, 0.14969836)
+texture = ExtResource("2_rac3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=117860163]
+visibility_layer = 16
+position = Vector2(256, 315)
+shape = SubResource("RectangleShape2D_xys6k")
+
+[node name="Inventory" type="Node" parent="." unique_id=1478239550]
+script = ExtResource("3_rac3s")
+
+[node name="InventoryUI" parent="." unique_id=753114972 instance=ExtResource("4_tnfoc")]

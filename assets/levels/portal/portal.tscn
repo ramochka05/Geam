@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://brs8jnbcbbvve"]
+
+[ext_resource type="Script" uid="uid://82rbok1ajwdt" path="res://assets/levels/portal/portal.gd" id="1_0ahy5"]
+
+[node name="portal" type="Area2D" unique_id=772575493]
+script = ExtResource("1_0ahy5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
