@@ -9,6 +9,9 @@ var current_scale = 1.0
 @onready var sprite = $Sprite2D
 # Получаем ссылку на форму коллизии
 @onready var collision_shape = $CollisionShape2D
+
+@onready var interaction_area: Area2D = $PlayerArea
+
 func _ready():
 	# ВОТ ЭТО САМОЕ ГЛАВНОЕ: 
 	# Соединяем сигнал изменения инвентаря с функцией обновления экрана
@@ -38,3 +41,29 @@ func _physics_process(delta):
 	if collision_shape.shape is RectangleShape2D:
 		var base_size = Vector2(150, 350) # Впишите сюда ваш изначальный размер хитбокса
 		collision_shape.shape.size = base_size * current_scale
+	
+func _input(event):
+	# Проверяем, является ли событие нажатием клавиши
+	if event is InputEventKey:
+		# Проверяем, была ли клавиша нажата (не отпущена)
+		if event.pressed:
+			match event.keycode:
+				KEY_E:   
+					print("Клавиша E нажата")
+					try_interact()
+	
+func try_interact():
+	# Получаем все Area2D, которые пересекаются с игроком
+	if interaction_area != null:
+		var areas = interaction_area.get_overlapping_areas()
+		for area in areas:
+			if area.has_method("interact"):
+				# Дополнительно проверяем, что игрок действительно рядом с этим предметом
+				if area.player_is_near:
+					area.interact()
+					return # Взаимодействуем только с одним предметом за раз
+					
+
+
+func _on_bad_apple_player_entered() -> void:
+	pass # Replace with function body.

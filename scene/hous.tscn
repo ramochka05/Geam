@@ -4,19 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://scene/player_test.tscn" id="2_k6bhc"]
 [ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://scene/portal.tscn" id="3_r3g4p"]
 [ext_resource type="PackedScene" uid="uid://dc4jfd01kh8dv" path="res://scene/apple.tscn" id="4_k6bhc"]
-[ext_resource type="Texture2D" uid="uid://bstj5qsw46h8h" path="res://sprites/Red-Circle-Transparent.png" id="5_xncuo"]
-[ext_resource type="Script" uid="uid://djtm0g8ovx1xy" path="res://inventory/item_data.gd" id="6_w0h0x"]
+[ext_resource type="Texture2D" uid="uid://dqwpdwtl0j3xv" path="res://sprites/apple.png" id="5_r3g4p"]
+[ext_resource type="Script" uid="uid://4okgj2l3u6iq" path="res://scene/bad_apple.gd" id="5_xncuo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ts2qu"]
+size = Vector2(46.593704, 29.212067)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xncuo"]
 size = Vector2(7.610489, 7.3191495)
-
-[sub_resource type="Resource" id="Resource_ts2qu"]
-script = ExtResource("6_w0h0x")
-name = "Яблоко"
-icon = ExtResource("5_xncuo")
-is_stackable = true
-max_stack_size = 10
-metadata/_custom_type_script = "uid://djtm0g8ovx1xy"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6bhc"]
 size = Vector2(233, 263.48425)
@@ -24,17 +19,35 @@ size = Vector2(233, 263.48425)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3g4p"]
 size = Vector2(1164, 45)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0h0x"]
+size = Vector2(171.7479, 108.48272)
+
 [node name="room1" type="Node2D" unique_id=903177662]
 
 [node name="Photo20260315175153" type="Sprite2D" parent="." unique_id=1145691021]
-position = Vector2(577, 325)
+position = Vector2(572, 323.00003)
 scale = Vector2(0.89453125, 0.71594685)
 texture = ExtResource("1_r3g4p")
 
 [node name="player test" parent="." unique_id=18880484 instance=ExtResource("2_k6bhc")]
-position = Vector2(407, 87)
+z_index = 1
+position = Vector2(393, 100.00001)
+rotation = 0.054105207
+skew = -0.04886922
+
+[node name="PlayerArea" type="Area2D" parent="player test" unique_id=175015965]
+position = Vector2(258.3, 304.76)
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="player test/PlayerArea" unique_id=1250435155]
+process_priority = 2
+position = Vector2(0.13631034, 6.344102)
+scale = Vector2(1.2000008, 1.2000008)
+skew = -0.040142573
+shape = SubResource("RectangleShape2D_ts2qu")
+debug_color = Color(0.69003457, 0.3745304, 0.8385237, 0.41960785)
 
 [node name="portal" parent="." unique_id=772575493 instance=ExtResource("3_r3g4p")]
+visible = false
 position = Vector2(682, 337)
 scene = "room_2"
 
@@ -45,10 +58,14 @@ scale = Vector2(4.597908, -5.1825204)
 shape = SubResource("RectangleShape2D_xncuo")
 
 [node name="apple" parent="." unique_id=97196546 instance=ExtResource("4_k6bhc")]
-position = Vector2(782, 395)
-item_data = SubResource("Resource_ts2qu")
+position = Vector2(846.00006, 281)
+scale = Vector2(1.0389951, 1)
+skew = 0.0017453292
+
+[node name="Sprite2D" type="Sprite2D" parent="apple" unique_id=603613694]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=82712180]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1194771578]
 position = Vector2(577.5, 73.877495)
@@ -56,24 +73,28 @@ scale = Vector2(0.94776964, -2.0339575)
 shape = SubResource("RectangleShape2D_k6bhc")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=319405878]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2" unique_id=1629981954]
 scale = Vector2(0.9979344, 0.9588078)
 polygon = PackedVector2Array(45, 500, 180, 450, 250, 380, 303, 430, 355, 420, 400, 350, 450, 400, 490, 358, 490, 6, 21, 3)
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=611371064]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3" unique_id=225520082]
 scale = Vector2(1.0246594, 0.9866733)
 polygon = PackedVector2Array(711, 7, 635, 350, 680, 380, 725, 300, 765, 400, 1091, 500, 1121, 621, 1137, 259)
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=297315801]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=162533582]
 position = Vector2(580, 613)
 shape = SubResource("RectangleShape2D_r3g4p")
 
 [node name="portal2" parent="." unique_id=1181492427 instance=ExtResource("3_r3g4p")]
+visible = false
 position = Vector2(817, 345)
 scene = "bedroom"
 
@@ -84,6 +105,7 @@ scale = Vector2(4.597908, -5.1825204)
 shape = SubResource("RectangleShape2D_xncuo")
 
 [node name="portal3" parent="." unique_id=222247301 instance=ExtResource("3_r3g4p")]
+visible = false
 position = Vector2(682, 337)
 scene = "kitchen"
 
@@ -94,6 +116,7 @@ scale = Vector2(4.597908, -5.1825204)
 shape = SubResource("RectangleShape2D_xncuo")
 
 [node name="portal4" parent="." unique_id=389458785 instance=ExtResource("3_r3g4p")]
+visible = false
 position = Vector2(682, 337)
 scene = "bathroom"
 
@@ -102,3 +125,17 @@ position = Vector2(-433, 70)
 rotation = -3.1415925
 scale = Vector2(4.597908, -5.1825204)
 shape = SubResource("RectangleShape2D_xncuo")
+
+[node name="BadApple" type="Area2D" parent="." unique_id=328611763]
+position = Vector2(867.98315, 456.13824)
+script = ExtResource("5_xncuo")
+
+[node name="BadAppleCollision" type="CollisionShape2D" parent="BadApple" unique_id=1298892762]
+position = Vector2(28.016846, 39.861755)
+shape = SubResource("RectangleShape2D_w0h0x")
+debug_color = Color(0.6596862, 0.5152476, 0, 0.41960785)
+
+[node name="PNGApple" type="Sprite2D" parent="BadApple" unique_id=1267728984]
+position = Vector2(61.01684, 5.861744)
+scale = Vector2(0.026117187, 0.020796234)
+texture = ExtResource("5_r3g4p")
