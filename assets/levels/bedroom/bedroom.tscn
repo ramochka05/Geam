@@ -2,19 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://csmycqhb3xsg3" path="res://assets/levels/bedroom/bedroom.jpg" id="1_smmaq"]
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_fnvm4"]
-[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://portal/portal.tscn" id="3_1qynn"]
+[ext_resource type="Script" uid="uid://d0ly1b82x1co8" path="res://assets/levels/bedroom/exit_zone.gd" id="3_8aci4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2v6b8"]
 size = Vector2(1274, 172)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_knfqp"]
-size = Vector2(62, 119)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smmaq"]
 size = Vector2(1056.25, 172)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnvm4"]
 size = Vector2(67.84428, 75.59026)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdvnw"]
+size = Vector2(90, 230.5)
 
 [node name="Bedroom" type="Node2D" unique_id=516565049]
 
@@ -23,21 +23,11 @@ position = Vector2(572.99994, 321)
 scale = Vector2(0.896875, 0.71125984)
 texture = ExtResource("1_smmaq")
 
-[node name="player test" parent="." unique_id=505350250 groups=["player"] instance=ExtResource("2_fnvm4")]
-position = Vector2(-452, -280)
-scale = Vector2(2.5, 2.374)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=315744719]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1172877065]
 position = Vector2(593, 237)
 shape = SubResource("RectangleShape2D_2v6b8")
-
-[node name="portal" parent="." unique_id=772575493 instance=ExtResource("3_1qynn")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="portal" unique_id=1202189673]
-position = Vector2(29, 458)
-shape = SubResource("RectangleShape2D_knfqp")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=239225088]
 
@@ -59,3 +49,16 @@ position = Vector2(129, 319.00003)
 rotation = 1.0192723
 scale = Vector2(0.94776964, -2.0339575)
 shape = SubResource("RectangleShape2D_fnvm4")
+
+[node name="ExitZone" type="Area2D" parent="." unique_id=1955839250]
+script = ExtResource("3_8aci4")
+next_scene_path = "res://assets/levels/hall/hall.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone" unique_id=2064447631]
+position = Vector2(35, 467)
+shape = SubResource("RectangleShape2D_tdvnw")
+debug_color = Color(0.83637625, 0.0012604481, 0.93257874, 0.41960785)
+
+[node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_fnvm4")]
+position = Vector2(255, 372)
+scale = Vector2(2, 2)

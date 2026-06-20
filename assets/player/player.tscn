@@ -5,24 +5,36 @@
 [ext_resource type="Script" uid="uid://m2fop5hgvsok" path="res://assets/inventory/inventory.gd" id="3_rac3s"]
 [ext_resource type="PackedScene" uid="uid://u7tcsdm0bwaw" path="res://assets/inventory/InventoryUI.tscn" id="4_tnfoc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xys6k"]
-size = Vector2(29.5, 67.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouxva"]
+size = Vector2(101.75, 112.75)
 
-[node name="player_test" type="CharacterBody2D" unique_id=505350250]
-position = Vector2(-31, -29)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d5dr7"]
+radius = 27.0
+height = 100.0
+
+[node name="Player" type="CharacterBody2D" unique_id=505350250 groups=["player"]]
+position = Vector2(140, 187)
 script = ExtResource("1_mnirw")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=66812850]
-position = Vector2(258.12497, 312.625)
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=66812850]
+position = Vector2(54, 37)
 scale = Vector2(0.17113549, 0.14969836)
 texture = ExtResource("2_rac3s")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=117860163]
-visibility_layer = 16
-position = Vector2(256, 315)
-shape = SubResource("RectangleShape2D_xys6k")
 
 [node name="Inventory" type="Node" parent="." unique_id=1478239550]
 script = ExtResource("3_rac3s")
 
 [node name="InventoryUI" parent="." unique_id=753114972 instance=ExtResource("4_tnfoc")]
+
+[node name="PlayerArea" type="Area2D" parent="." unique_id=340163452]
+position = Vector2(-55, -29)
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="PlayerArea" unique_id=1507826957]
+position = Vector2(110, 68)
+shape = SubResource("RectangleShape2D_ouxva")
+debug_color = Color(0.510883, 0.5780701, 5.7756904e-07, 0.41960785)
+
+[node name="PlayerBody" type="CollisionShape2D" parent="." unique_id=659829283]
+position = Vector2(56, 39)
+shape = SubResource("CapsuleShape2D_d5dr7")
+debug_color = Color(0.5667051, 0.5289337, 0.49367929, 0.41960785)

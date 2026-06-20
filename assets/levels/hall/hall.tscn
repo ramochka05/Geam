@@ -2,13 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dyk2xymsrdxvk" path="res://assets/levels/hall/hall.jpg" id="1_i44t4"]
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_53m2r"]
-[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://assets/levels/portal/portal.tscn" id="3_r7kep"]
+[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://portal/portal.tscn" id="3_r7kep"]
 [ext_resource type="PackedScene" uid="uid://dc4jfd01kh8dv" path="res://assets/items/apple/apple.tscn" id="4_hxxtw"]
 [ext_resource type="Script" uid="uid://4okgj2l3u6iq" path="res://assets/items/apple/bad_apple.gd" id="5_7vl5q"]
 [ext_resource type="Texture2D" uid="uid://dqwpdwtl0j3xv" path="res://assets/items/apple/bad_apple_sprite.png" id="6_8rbfl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ts2qu"]
-size = Vector2(46.593704, 29.212067)
+[ext_resource type="Script" uid="uid://d0ly1b82x1co8" path="res://assets/levels/bedroom/exit_zone.gd" id="7_xtsg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xncuo"]
 size = Vector2(7.610489, 7.3191495)
@@ -22,29 +20,15 @@ size = Vector2(1164, 45)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0h0x"]
 size = Vector2(171.7479, 108.48272)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bwe1"]
+size = Vector2(168, 122.25)
+
 [node name="hall" type="Node2D" unique_id=903177662]
 
 [node name="hall" type="Sprite2D" parent="." unique_id=1145691021]
 position = Vector2(572, 323.00003)
 scale = Vector2(0.89453125, 0.71594685)
 texture = ExtResource("1_i44t4")
-
-[node name="player" parent="." unique_id=18880484 instance=ExtResource("2_53m2r")]
-z_index = 1
-position = Vector2(393, 100.00001)
-rotation = 0.054105207
-skew = -0.04886922
-
-[node name="PlayerArea" type="Area2D" parent="player" unique_id=175015965]
-position = Vector2(258.3, 304.76)
-
-[node name="PlayerCollision" type="CollisionShape2D" parent="player/PlayerArea" unique_id=1250435155]
-process_priority = 2
-position = Vector2(0.13631034, 6.344102)
-scale = Vector2(1.2000008, 1.2000008)
-skew = -0.040142573
-shape = SubResource("RectangleShape2D_ts2qu")
-debug_color = Color(0.69003457, 0.3745304, 0.8385237, 0.41960785)
 
 [node name="portal" parent="." unique_id=772575493 instance=ExtResource("3_r7kep")]
 position = Vector2(682, 337)
@@ -98,16 +82,6 @@ rotation = -3.1415925
 scale = Vector2(4.597908, -5.1825204)
 shape = SubResource("RectangleShape2D_xncuo")
 
-[node name="portal3" parent="." unique_id=222247301 instance=ExtResource("3_r7kep")]
-position = Vector2(682, 337)
-scene = "kitchen"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="portal3" unique_id=242918043]
-position = Vector2(-274, 43)
-rotation = -3.1415925
-scale = Vector2(4.597908, -5.1825204)
-shape = SubResource("RectangleShape2D_xncuo")
-
 [node name="portal4" parent="." unique_id=389458785 instance=ExtResource("3_r7kep")]
 position = Vector2(682, 337)
 scene = "bathroom"
@@ -131,3 +105,15 @@ debug_color = Color(0.6596862, 0.5152476, 0, 0.41960785)
 position = Vector2(61.01684, 5.861744)
 scale = Vector2(0.026117187, 0.020796234)
 texture = ExtResource("6_8rbfl")
+
+[node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_53m2r")]
+position = Vector2(902, 489)
+
+[node name="ExitZone" type="Area2D" parent="." unique_id=668762984]
+script = ExtResource("7_xtsg6")
+next_scene_path = "res://assets/levels/kitchen/kitchen.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone" unique_id=1873106685]
+position = Vector2(427, 413)
+shape = SubResource("RectangleShape2D_7bwe1")
+debug_color = Color(0.83637625, 0.0012604481, 0.93257874, 0.41960785)

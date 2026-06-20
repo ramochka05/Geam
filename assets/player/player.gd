@@ -6,9 +6,9 @@ var current_scale = 1.0
 @onready var inventory = $Inventory 
 @onready var inventory_ui = $InventoryUI 
 # Получаем ссылку на узел спрайта (измените имя, если оно другое)
-@onready var sprite = $Sprite2D
+@onready var sprite = $PlayerSprite
 # Получаем ссылку на форму коллизии
-@onready var collision_shape = $CollisionShape2D
+@onready var collision_shape = $PlayerBody
 
 @onready var interaction_area: Area2D = $PlayerArea
 
@@ -34,13 +34,13 @@ func _physics_process(delta):
 	var raw_scale = position.y / screen_size.y
 	current_scale = clamp(raw_scale, 0.15, 5.0)
 	
-	# Применяем масштаб к спрайту или самому телу
-	# ВАЖНО: Если у вас есть спрайт внутри тела, используйте $Sprite2D.scale
-	# Если вы хотите масштабировать всё тело целиком (включая коллизию), пишите scale
-	$Sprite2D.scale = Vector2(current_scale, current_scale)
-	if collision_shape.shape is RectangleShape2D:
-		var base_size = Vector2(150, 350) # Впишите сюда ваш изначальный размер хитбокса
-		collision_shape.shape.size = base_size * current_scale
+	## Применяем масштаб к спрайту или самому телу
+	## ВАЖНО: Если у вас есть спрайт внутри тела, используйте $Sprite2D.scale
+	## Если вы хотите масштабировать всё тело целиком (включая коллизию), пишите scale
+	#$Sprite2D.scale = Vector2(current_scale, current_scale)
+	#if collision_shape.shape is RectangleShape2D:
+		#var base_size = Vector2(150, 350) # Впишите сюда ваш изначальный размер хитбокса
+		#collision_shape.shape.size = base_size * current_scale
 	
 func _input(event):
 	# Проверяем, является ли событие нажатием клавиши
@@ -56,6 +56,7 @@ func try_interact():
 	# Получаем все Area2D, которые пересекаются с игроком
 	if interaction_area != null:
 		var areas = interaction_area.get_overlapping_areas()
+		print(areas)
 		for area in areas:
 			if area.has_method("interact"):
 				# Дополнительно проверяем, что игрок действительно рядом с этим предметом

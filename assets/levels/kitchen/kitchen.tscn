@@ -2,12 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bcibtmnjawio0" path="res://assets/levels/kitchen/kitchen.jpg" id="1_crp0g"]
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_5pn3r"]
-[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://assets/levels/portal/portal.tscn" id="3_wnebr"]
+[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://portal/portal.tscn" id="3_wnebr"]
 [ext_resource type="PackedScene" uid="uid://cagp2sm21boxg" path="res://assets/characters/mother/mother.tscn" id="4_wnebr"]
 [ext_resource type="Script" uid="uid://bwkd8tdv3p0mc" path="res://assets/characters/mother/mother.gd" id="5_ek7yq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_70nra"]
-size = Vector2(15.099998, 8.420391)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ek7yq"]
 size = Vector2(61.5, 81.5)
@@ -48,19 +45,6 @@ outline_size = 5
 position = Vector2(582.6903, 321)
 scale = Vector2(0.45288306, 0.4613442)
 texture = ExtResource("1_crp0g")
-
-[node name="player test" parent="." unique_id=505350250 instance=ExtResource("2_5pn3r")]
-z_index = 1
-position = Vector2(252, -278.00003)
-scale = Vector2(2.5, 2.374)
-
-[node name="PlayerArea" type="Area2D" parent="player test" unique_id=2139511967]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player test/PlayerArea" unique_id=1162438495]
-position = Vector2(256.8, 306.2342)
-scale = Vector2(4, 3.9999998)
-shape = SubResource("RectangleShape2D_70nra")
-debug_color = Color(0.71830875, 0.2532061, 0.99999994, 0.41960785)
 
 [node name="portal" parent="." unique_id=772575493 instance=ExtResource("3_wnebr")]
 scene = "hous"
@@ -127,3 +111,7 @@ text = "Яблоко...
  В последний раз я его видела в доме"
 label_settings = SubResource("LabelSettings_ig7eq")
 horizontal_alignment = 1
+
+[node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_5pn3r")]
+position = Vector2(778, 377)
+scale = Vector2(2, 2)
