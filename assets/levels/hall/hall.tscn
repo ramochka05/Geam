@@ -7,15 +7,16 @@
 [ext_resource type="Script" uid="uid://4okgj2l3u6iq" path="res://assets/items/apple/bad_apple.gd" id="5_7vl5q"]
 [ext_resource type="Texture2D" uid="uid://dqwpdwtl0j3xv" path="res://assets/items/apple/bad_apple_sprite.png" id="6_8rbfl"]
 [ext_resource type="Script" uid="uid://d0ly1b82x1co8" path="res://assets/levels/bedroom/exit_zone.gd" id="7_xtsg6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xncuo"]
-size = Vector2(7.610489, 7.3191495)
+[ext_resource type="PackedScene" uid="uid://slgjylt8neuh" path="res://common/transition/transition.tscn" id="8_7bwe1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6bhc"]
 size = Vector2(233, 263.48425)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3g4p"]
 size = Vector2(1164, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xncuo"]
+size = Vector2(7.610489, 7.3191495)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0h0x"]
 size = Vector2(171.7479, 108.48272)
@@ -29,16 +30,6 @@ size = Vector2(168, 122.25)
 position = Vector2(572, 323.00003)
 scale = Vector2(0.89453125, 0.71594685)
 texture = ExtResource("1_i44t4")
-
-[node name="portal" parent="." unique_id=772575493 instance=ExtResource("3_r7kep")]
-position = Vector2(682, 337)
-scene = "room_2"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="portal" unique_id=61487954]
-position = Vector2(58, 33.03418)
-rotation = -3.1415925
-scale = Vector2(4.597908, -5.1825204)
-shape = SubResource("RectangleShape2D_xncuo")
 
 [node name="apple" parent="." unique_id=97196546 instance=ExtResource("4_hxxtw")]
 position = Vector2(796.00006, 364)
@@ -107,7 +98,8 @@ scale = Vector2(0.026117187, 0.020796234)
 texture = ExtResource("6_8rbfl")
 
 [node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_53m2r")]
-position = Vector2(902, 489)
+position = Vector2(894, 482)
+scale = Vector2(1, 1)
 
 [node name="ExitZone" type="Area2D" parent="." unique_id=668762984]
 script = ExtResource("7_xtsg6")
@@ -117,3 +109,12 @@ next_scene_path = "res://assets/levels/kitchen/kitchen.tscn"
 position = Vector2(427, 413)
 shape = SubResource("RectangleShape2D_7bwe1")
 debug_color = Color(0.83637625, 0.0012604481, 0.93257874, 0.41960785)
+
+[node name="Transition" parent="." unique_id=559016387 instance=ExtResource("8_7bwe1")]
+position = Vector2(716, 361)
+
+[node name="Transition" parent="Transition" index="0" unique_id=1575018044]
+next_scene_path = "res://assets/levels/living_room/living_room.tscn"
+zone_name = "Hall2living_room"
+
+[editable path="Transition"]

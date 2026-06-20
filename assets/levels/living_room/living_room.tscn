@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://j5pg8p4ugd2e" path="res://assets/levels/living_room/living_room.jpg" id="1_6gg1q"]
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_etakd"]
-[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://assets/levels/portal/portal.tscn" id="3_3gdaq"]
+[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://portal/portal.tscn" id="3_3gdaq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgeml"]
 size = Vector2(62, 330)
@@ -13,16 +13,12 @@ size = Vector2(1056.25, 172)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2xpc"]
 size = Vector2(20.338211, 75.46605)
 
-[node name="room2" type="Node2D" unique_id=1112863121]
+[node name="living_room" type="Node2D" unique_id=1112863121]
 
 [node name="Photo20260315175202" type="Sprite2D" parent="." unique_id=464612286]
 position = Vector2(578.00006, 325.00003)
 scale = Vector2(0.8993928, 0.7191455)
 texture = ExtResource("1_6gg1q")
-
-[node name="player test" parent="." unique_id=505350250 instance=ExtResource("2_etakd")]
-position = Vector2(-449, -266)
-scale = Vector2(2.5, 2.374)
 
 [node name="portal" parent="." unique_id=772575493 instance=ExtResource("3_3gdaq")]
 scene = "hous"
@@ -60,3 +56,6 @@ rotation = 0.8220501
 position = Vector2(157, 332.00003)
 scale = Vector2(0.94776964, -2.0339575)
 shape = SubResource("RectangleShape2D_x2xpc")
+
+[node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_etakd")]
+position = Vector2(90, 396)
