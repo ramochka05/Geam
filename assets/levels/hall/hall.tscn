@@ -7,11 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dqwpdwtl0j3xv" path="res://assets/items/apple/bad_apple_sprite.png" id="6_8rbfl"]
 [ext_resource type="Script" uid="uid://c6rjk7mccsb5j" path="res://assets/levels/transition.gd" id="6_v17jn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6bhc"]
-size = Vector2(233, 263.48425)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3g4p"]
-size = Vector2(1164, 45)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2b18"]
+size = Vector2(591.6533, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0h0x"]
 size = Vector2(171.7479, 108.48272)
@@ -23,7 +20,7 @@ size = Vector2(66.8125, 85.75)
 size = Vector2(61.25, 86.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bwe1"]
-size = Vector2(138, 239.75)
+size = Vector2(107, 169)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtd3i"]
 size = Vector2(70, 103)
@@ -42,30 +39,17 @@ skew = 0.0017453292
 
 [node name="Sprite2D" type="Sprite2D" parent="apple" unique_id=603613694]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=82712180]
+[node name="RoomBounds" type="StaticBody2D" parent="." unique_id=82712180]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1194771578]
-position = Vector2(577.5, 73.877495)
-scale = Vector2(0.94776964, -2.0339575)
-shape = SubResource("RectangleShape2D_k6bhc")
+[node name="LeftCeiling" type="CollisionShape2D" parent="RoomBounds" unique_id=877325562]
+position = Vector2(283.25363, 255.6789)
+rotation = 0.091718554
+shape = SubResource("RectangleShape2D_t2b18")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=319405878]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2" unique_id=1629981954]
-scale = Vector2(0.9979344, 0.9588078)
-polygon = PackedVector2Array(45, 500, 180, 450, 250, 380, 303, 430, 355, 420, 400, 350, 450, 400, 490, 358, 490, 6, 21, 3)
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=611371064]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3" unique_id=225520082]
-scale = Vector2(1.0246594, 0.9866733)
-polygon = PackedVector2Array(711, 7, 635, 350, 680, 380, 725, 300, 765, 400, 1091, 500, 1121, 621, 1137, 259)
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=297315801]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=162533582]
-position = Vector2(580, 613)
-shape = SubResource("RectangleShape2D_r3g4p")
+[node name="LeftCeiling2" type="CollisionShape2D" parent="RoomBounds" unique_id=939516255]
+position = Vector2(870.99994, 255.99995)
+rotation = -0.09250245
+shape = SubResource("RectangleShape2D_t2b18")
 
 [node name="BadApple" type="Area2D" parent="." unique_id=328611763]
 position = Vector2(867.98315, 456.13824)
@@ -82,7 +66,7 @@ scale = Vector2(0.026117187, 0.020796234)
 texture = ExtResource("6_8rbfl")
 
 [node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_53m2r")]
-position = Vector2(491, 397.00003)
+position = Vector2(544, 410.00003)
 scale = Vector2(1.3, 1.3)
 
 [node name="ToKitchen" type="Area2D" parent="." unique_id=680328496]
@@ -111,7 +95,7 @@ next_scene_path = "res://assets/levels/bedroom/bedroom.tscn"
 zone_name = "Hall2Bed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToBedroom" unique_id=1203920125]
-position = Vector2(1060, 471.125)
+position = Vector2(1086, 448)
 shape = SubResource("RectangleShape2D_7bwe1")
 debug_color = Color(0.84313726, 0, 0.92156863, 0.48235294)
 

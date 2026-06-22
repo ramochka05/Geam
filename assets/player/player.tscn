@@ -17,7 +17,7 @@ position = Vector2(140, 187)
 scale = Vector2(2, 2)
 script = ExtResource("1_mnirw")
 
-[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=66812850]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=66812850]
 position = Vector2(54, 37)
 scale = Vector2(0.17113549, 0.14969836)
 texture = ExtResource("2_rac3s")
@@ -27,17 +27,17 @@ script = ExtResource("3_rac3s")
 
 [node name="InventoryUI" parent="." unique_id=753114972 instance=ExtResource("4_tnfoc")]
 
-[node name="PlayerArea" type="Area2D" parent="." unique_id=340163452]
+[node name="Area2D" type="Area2D" parent="." unique_id=340163452]
 position = Vector2(-55, -29)
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="PlayerArea" unique_id=1507826957]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1507826957]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(109.5, 67)
 shape = SubResource("RectangleShape2D_ouxva")
 debug_color = Color(0.510883, 0.5780701, 5.7756904e-07, 0.41960785)
 
-[node name="PlayerBody" type="CollisionShape2D" parent="." unique_id=659829283]
+[node name="Body" type="CollisionShape2D" parent="." unique_id=659829283]
 visible = false
 position = Vector2(54, 40)
 shape = SubResource("CapsuleShape2D_d5dr7")

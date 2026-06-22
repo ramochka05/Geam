@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-var current_scale = 1.0
+var current_scale = 0.2
 
 @onready var inventory = $Inventory 
 @onready var inventory_ui = $InventoryUI 
 # Получаем ссылку на узел спрайта (измените имя, если оно другое)
-@onready var sprite = $PlayerSprite
+@onready var sprite = $Sprite
 # Получаем ссылку на форму коллизии
-@onready var collision_shape = $PlayerBody
+@onready var collision_shape = $Area2D/CollisionShape2D
 
-@onready var interaction_area: Area2D = $PlayerArea
+@onready var interaction_area: Area2D = $Area2D
 
 func _ready():
 	# ВОТ ЭТО САМОЕ ГЛАВНОЕ: 
@@ -37,7 +37,7 @@ func _physics_process(delta):
 	## Применяем масштаб к спрайту или самому телу
 	## ВАЖНО: Если у вас есть спрайт внутри тела, используйте $Sprite2D.scale
 	## Если вы хотите масштабировать всё тело целиком (включая коллизию), пишите scale
-	#$Sprite2D.scale = Vector2(current_scale, current_scale)
+	#sprite.scale = Vector2(current_scale, current_scale)
 	#if collision_shape.shape is RectangleShape2D:
 		#var base_size = Vector2(150, 350) # Впишите сюда ваш изначальный размер хитбокса
 		#collision_shape.shape.size = base_size * current_scale
