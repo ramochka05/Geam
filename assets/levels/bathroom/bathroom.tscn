@@ -2,25 +2,22 @@
 
 [ext_resource type="Texture2D" uid="uid://btcu8t7f4r5l2" path="res://assets/levels/bathroom/bathroom.jpg" id="1_2j2yw"]
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_jed63"]
-[ext_resource type="PackedScene" uid="uid://brs8jnbcbbvve" path="res://assets/levels/portal/portal.tscn" id="3_rb8w3"]
+[ext_resource type="Script" uid="uid://c6rjk7mccsb5j" path="res://assets/levels/transition.gd" id="3_7katy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jed63"]
-size = Vector2(1056.25, 172)
+size = Vector2(1179, 268)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rb8w3"]
-size = Vector2(1056.25, 172)
+size = Vector2(174.46558, 694.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ina83"]
-size = Vector2(1056.25, 172)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb8yf"]
-size = Vector2(43.932854, 75.46605)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i5ji"]
-size = Vector2(61.5, 81.5)
+size = Vector2(1256.125, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63kf1"]
-size = Vector2(70.22832, 66.79812)
+size = Vector2(70.22832, 188.05774)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2jn1"]
+size = Vector2(159, 263.5)
 
 [node name="Node2D" type="Node2D" unique_id=996018582]
 
@@ -30,53 +27,37 @@ scale = Vector2(0.4515625, 0.33645833)
 texture = ExtResource("1_2j2yw")
 
 [node name="player test" parent="." unique_id=505350250 instance=ExtResource("2_jed63")]
-position = Vector2(261, -282)
+position = Vector2(799, 379.99994)
 scale = Vector2(2.5, 2.374)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=422106072]
 position = Vector2(6, -50)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1753639331]
-position = Vector2(588, 294)
+[node name="Ceiling" type="CollisionShape2D" parent="StaticBody2D" unique_id=1753639331]
+position = Vector2(569.5, 166)
 shape = SubResource("RectangleShape2D_jed63")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=175118907]
-position = Vector2(-17, -4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1650902621]
-position = Vector2(297, 401)
-rotation = -0.85695666
+[node name="LeftWall" type="CollisionShape2D" parent="StaticBody2D" unique_id=1650902621]
+position = Vector2(204.00003, 439)
+rotation = 0.5219003
 shape = SubResource("RectangleShape2D_rb8w3")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=513077390]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=595455592]
-position = Vector2(697, 690)
+[node name="Floor" type="CollisionShape2D" parent="StaticBody2D" unique_id=595455592]
+position = Vector2(591.0625, 698)
 shape = SubResource("RectangleShape2D_ina83")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1350303250]
-position = Vector2(328, -20.000015)
-rotation = 0.8220501
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=611695883]
-position = Vector2(657.7115, -221.53256)
-rotation = -1.7645279
-scale = Vector2(0.94776964, -2.0339577)
-shape = SubResource("RectangleShape2D_gb8yf")
-
-[node name="portal" parent="." unique_id=772575493 instance=ExtResource("3_rb8w3")]
-scene = "hous"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="portal" unique_id=1492719009]
-position = Vector2(1073, 386)
-shape = SubResource("RectangleShape2D_0i5ji")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=862391766]
-position = Vector2(328, -20.000015)
-rotation = 0.8220501
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=2059541328]
-position = Vector2(934.0725, -299.50867)
-rotation = -1.2688544
-scale = Vector2(0.9477706, -2.0339582)
+[node name="RightWall" type="CollisionShape2D" parent="StaticBody2D" unique_id=2059541328]
+position = Vector2(1152, 491.00003)
+rotation = -0.44680426
+scale = Vector2(0.94777054, -2.0339582)
 shape = SubResource("RectangleShape2D_63kf1")
+
+[node name="ToHall" type="Area2D" parent="." unique_id=1969906870]
+script = ExtResource("3_7katy")
+next_scene_path = "res://assets/levels/hall/hall.tscn"
+zone_name = "Bath2Hall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToHall" unique_id=1501342325]
+position = Vector2(1064, 465.25)
+shape = SubResource("RectangleShape2D_u2jn1")
+debug_color = Color(0.84313726, 0, 0.92156863, 0.48235294)

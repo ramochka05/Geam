@@ -2,19 +2,25 @@
 
 [ext_resource type="Texture2D" uid="uid://csmycqhb3xsg3" path="res://assets/levels/bedroom/bedroom.jpg" id="1_smmaq"]
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_fnvm4"]
-[ext_resource type="Script" uid="uid://d0ly1b82x1co8" path="res://assets/levels/bedroom/exit_zone.gd" id="3_8aci4"]
+[ext_resource type="Script" uid="uid://c6rjk7mccsb5j" path="res://assets/levels/transition.gd" id="4_0x4po"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2v6b8"]
-size = Vector2(1274, 172)
+size = Vector2(1187, 322)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_smmaq"]
-size = Vector2(1056.25, 172)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnvm4"]
-size = Vector2(67.84428, 75.59026)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8aci4"]
+size = Vector2(1264.5, 107.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdvnw"]
-size = Vector2(90, 230.5)
+size = Vector2(438.1889, 139.85986)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x4po"]
+size = Vector2(43, 292)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o35ul"]
+size = Vector2(128, 263)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8aci4"]
+font_size = 30
 
 [node name="Bedroom" type="Node2D" unique_id=516565049]
 
@@ -23,42 +29,42 @@ position = Vector2(572.99994, 321)
 scale = Vector2(0.896875, 0.71125984)
 texture = ExtResource("1_smmaq")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=315744719]
+[node name="RoomBounds" type="StaticBody2D" parent="." unique_id=315744719]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1172877065]
-position = Vector2(593, 237)
+[node name="Ceiling" type="CollisionShape2D" parent="RoomBounds" unique_id=1172877065]
+position = Vector2(572.5, 152)
 shape = SubResource("RectangleShape2D_2v6b8")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=239225088]
+[node name="Floor" type="CollisionShape2D" parent="RoomBounds" unique_id=1226159598]
+position = Vector2(618.75, 652.25)
+shape = SubResource("RectangleShape2D_8aci4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=2026487081]
-position = Vector2(625, 688)
-shape = SubResource("RectangleShape2D_2v6b8")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1705702322]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1790098756]
-position = Vector2(1440.0001, 574.99994)
-rotation = 0.6318092
-shape = SubResource("RectangleShape2D_smmaq")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=740381180]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1927414913]
-position = Vector2(129, 319.00003)
-rotation = 1.0192723
-scale = Vector2(0.94776964, -2.0339575)
-shape = SubResource("RectangleShape2D_fnvm4")
-
-[node name="ExitZone" type="Area2D" parent="." unique_id=1955839250]
-script = ExtResource("3_8aci4")
-next_scene_path = "res://assets/levels/hall/hall.tscn"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone" unique_id=2064447631]
-position = Vector2(35, 467)
+[node name="RightWall" type="CollisionShape2D" parent="RoomBounds" unique_id=1563392552]
+position = Vector2(1165.4154, 420.0284)
+rotation = 0.89120483
 shape = SubResource("RectangleShape2D_tdvnw")
-debug_color = Color(0.83637625, 0.0012604481, 0.93257874, 0.41960785)
+
+[node name="LeftWall" type="CollisionShape2D" parent="RoomBounds" unique_id=352451760]
+position = Vector2(-5.5, 462)
+shape = SubResource("RectangleShape2D_0x4po")
 
 [node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_fnvm4")]
 position = Vector2(255, 372)
-scale = Vector2(2, 2)
+
+[node name="ToHall" type="Area2D" parent="." unique_id=1440278972]
+script = ExtResource("4_0x4po")
+next_scene_path = "res://assets/levels/hall/hall.tscn"
+zone_name = "Bed2Hall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToHall" unique_id=428963692]
+position = Vector2(71, 454.5)
+shape = SubResource("RectangleShape2D_o35ul")
+debug_color = Color(0.84313726, 0, 0.92156863, 0.48235294)
+
+[node name="Label" type="Label" parent="ToHall" unique_id=1721322064]
+offset_left = 6.0
+offset_top = 264.0
+offset_right = 220.0
+offset_bottom = 342.0
+text = "НАЖМИТЕ Е"
+label_settings = SubResource("LabelSettings_8aci4")

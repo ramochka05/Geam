@@ -6,21 +6,32 @@ extends Area2D
 # Название зоны (для отладки)
 @export var zone_name: String
 
+@onready var label: Label = $Label
+
 var player_is_near = false
 
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	
+	if label:
+		label.hide()
+
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		player_is_near = true
 		print("Игрок рядом с зоной: ", zone_name)
+		if label:
+			label.show()
+
 
 func _on_body_exited(body):
 	if body.is_in_group("player"):
 		player_is_near = false
 		print("Игрок покинул зону: ", zone_name)
+		if label:
+			label.hide()
 
 # Вызывается из скрипта игрока при нажатии клавиши
 func interact():
