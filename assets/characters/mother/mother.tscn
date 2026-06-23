@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cagp2sm21boxg"]
+
+[ext_resource type="Texture2D" uid="uid://qx2cxts0a0ip" path="res://assets/characters/mother/mother.png" id="1_5qbvy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5qbvy"]
+radius = 24.01857
+height = 75.8587
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2vup4"]
+radius = 44.0
+height = 158.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=485670045]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=423875235]
+position = Vector2(201.99997, 229)
+scale = Vector2(0.24450229, 0.2330196)
+texture = ExtResource("1_5qbvy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197537128]
+position = Vector2(207, 171)
+rotation = 1.5428711
+shape = SubResource("CapsuleShape2D_5qbvy")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=759897988]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=143399153]
+light_mask = 16
+position = Vector2(204, 189)
+shape = SubResource("CapsuleShape2D_2vup4")

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cgfljcdrduvmg"]
+
+[ext_resource type="Texture2D" uid="uid://csmycqhb3xsg3" path="res://assets/levels/bedroom/bedroom.jpg" id="1_smmaq"]
+[ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_fnvm4"]
+[ext_resource type="Script" uid="uid://c6rjk7mccsb5j" path="res://assets/levels/transition.gd" id="4_0x4po"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v6b8"]
+size = Vector2(1187, 322)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8aci4"]
+size = Vector2(1264.5, 107.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdvnw"]
+size = Vector2(438.1889, 139.85986)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x4po"]
+size = Vector2(43, 292)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o35ul"]
+size = Vector2(128, 263)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8aci4"]
+font_size = 30
+
+[node name="Bedroom" type="Node2D" unique_id=516565049]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151153387]
+position = Vector2(572.99994, 321)
+scale = Vector2(0.896875, 0.71125984)
+texture = ExtResource("1_smmaq")
+
+[node name="RoomBounds" type="StaticBody2D" parent="." unique_id=315744719]
+
+[node name="Ceiling" type="CollisionShape2D" parent="RoomBounds" unique_id=1172877065]
+position = Vector2(572.5, 152)
+shape = SubResource("RectangleShape2D_2v6b8")
+
+[node name="Floor" type="CollisionShape2D" parent="RoomBounds" unique_id=1226159598]
+position = Vector2(618.75, 652.25)
+shape = SubResource("RectangleShape2D_8aci4")
+
+[node name="RightWall" type="CollisionShape2D" parent="RoomBounds" unique_id=1563392552]
+position = Vector2(1165.4154, 420.0284)
+rotation = 0.89120483
+shape = SubResource("RectangleShape2D_tdvnw")
+
+[node name="LeftWall" type="CollisionShape2D" parent="RoomBounds" unique_id=352451760]
+position = Vector2(-5.5, 462)
+shape = SubResource("RectangleShape2D_0x4po")
+
+[node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_fnvm4")]
+position = Vector2(255, 372)
+
+[node name="ToHall" type="Area2D" parent="." unique_id=1440278972]
+script = ExtResource("4_0x4po")
+next_scene_path = "res://assets/levels/hall/hall.tscn"
+zone_name = "Bed2Hall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToHall" unique_id=428963692]
+position = Vector2(71, 454.5)
+shape = SubResource("RectangleShape2D_o35ul")
+debug_color = Color(0.84313726, 0, 0.92156863, 0.48235294)
+
+[node name="Label" type="Label" parent="ToHall" unique_id=1721322064]
+offset_left = 6.0
+offset_top = 264.0
+offset_right = 220.0
+offset_bottom = 342.0
+text = "НАЖМИТЕ Е"
+label_settings = SubResource("LabelSettings_8aci4")

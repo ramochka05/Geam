@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dwxxue464ng7a"]
+
+[ext_resource type="Script" uid="uid://btc5fgq7itedv" path="res://assets/player/player.gd" id="1_mnirw"]
+[ext_resource type="Texture2D" uid="uid://dgq3hify1vg1b" path="res://assets/player/player_sprite.png" id="2_rac3s"]
+[ext_resource type="Script" uid="uid://m2fop5hgvsok" path="res://assets/inventory/inventory.gd" id="3_rac3s"]
+[ext_resource type="PackedScene" uid="uid://u7tcsdm0bwaw" path="res://assets/inventory/InventoryUI.tscn" id="4_tnfoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouxva"]
+size = Vector2(28.25, 62.75)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d5dr7"]
+radius = 27.0
+height = 100.0
+
+[node name="Player" type="CharacterBody2D" unique_id=505350250 groups=["player"]]
+position = Vector2(140, 187)
+scale = Vector2(2, 2)
+script = ExtResource("1_mnirw")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=66812850]
+position = Vector2(54, 37)
+scale = Vector2(0.17113549, 0.14969836)
+texture = ExtResource("2_rac3s")
+
+[node name="Inventory" type="Node" parent="." unique_id=1478239550]
+script = ExtResource("3_rac3s")
+
+[node name="InventoryUI" parent="." unique_id=753114972 instance=ExtResource("4_tnfoc")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=340163452]
+position = Vector2(-55, -29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1507826957]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(109.5, 67)
+shape = SubResource("RectangleShape2D_ouxva")
+debug_color = Color(0.510883, 0.5780701, 5.7756904e-07, 0.41960785)
+
+[node name="Body" type="CollisionShape2D" parent="." unique_id=659829283]
+visible = false
+position = Vector2(54, 40)
+shape = SubResource("CapsuleShape2D_d5dr7")
+debug_color = Color(0.5667051, 0.5289337, 0.49367929, 0.41960785)

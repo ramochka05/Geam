@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://5qg1l6lrrarg"]
+
+[ext_resource type="Texture2D" uid="uid://bcibtmnjawio0" path="res://assets/levels/kitchen/kitchen.jpg" id="1_crp0g"]
+[ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_5pn3r"]
+[ext_resource type="PackedScene" uid="uid://cagp2sm21boxg" path="res://assets/characters/mother/mother.tscn" id="4_wnebr"]
+[ext_resource type="Script" uid="uid://c6rjk7mccsb5j" path="res://assets/levels/transition.gd" id="5_83tla"]
+[ext_resource type="Script" uid="uid://bwkd8tdv3p0mc" path="res://assets/characters/mother/mother.gd" id="5_ek7yq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pn3r"]
+size = Vector2(1194.125, 284)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnebr"]
+size = Vector2(1259.5625, 97)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiegy"]
+size = Vector2(541.9794, 68.97272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7eq"]
+size = Vector2(451.18146, 172)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mibyj"]
+size = Vector2(246.25, 97)
+
+[sub_resource type="SystemFont" id="SystemFont_ek7yq"]
+
+[sub_resource type="FontVariation" id="FontVariation_kiegy"]
+resource_local_to_scene = true
+base_font = SubResource("SystemFont_ek7yq")
+variation_embolden = 0.1
+
+[sub_resource type="LabelSettings" id="LabelSettings_ig7eq"]
+font = SubResource("FontVariation_kiegy")
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6df5"]
+size = Vector2(110.5, 268.5)
+
+[node name="Node2D" type="Node2D" unique_id=1134077883]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=370447391]
+position = Vector2(582.6903, 321)
+scale = Vector2(0.45288306, 0.4613442)
+texture = ExtResource("1_crp0g")
+
+[node name="RoomBounds" type="StaticBody2D" parent="." unique_id=496796696]
+position = Vector2(6, -50)
+
+[node name="Ceiling" type="CollisionShape2D" parent="RoomBounds" unique_id=5359899]
+position = Vector2(581.0625, 175)
+shape = SubResource("RectangleShape2D_5pn3r")
+
+[node name="Floor" type="CollisionShape2D" parent="RoomBounds" unique_id=571448775]
+position = Vector2(619.21875, 700.5)
+shape = SubResource("RectangleShape2D_wnebr")
+
+[node name="LeftWall" type="CollisionShape2D" parent="RoomBounds" unique_id=2010873489]
+position = Vector2(-7, 446)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_kiegy")
+
+[node name="RightWall" type="CollisionShape2D" parent="RoomBounds" unique_id=1456664677]
+position = Vector2(1175.9446, 461.77173)
+rotation = 1.1117382
+shape = SubResource("RectangleShape2D_ig7eq")
+
+[node name="Mother" parent="." unique_id=485670045 instance=ExtResource("4_wnebr")]
+position = Vector2(133, 175)
+
+[node name="MomArea" type="Area2D" parent="Mother" unique_id=1036276756]
+script = ExtResource("5_ek7yq")
+
+[node name="MomCollision" type="CollisionShape2D" parent="Mother/MomArea" unique_id=391628446]
+position = Vector2(200, 197)
+shape = SubResource("RectangleShape2D_mibyj")
+debug_color = Color(0.6512648, 0.5196171, 0, 0.41960785)
+
+[node name="MomText" type="Label" parent="Mother/MomArea" unique_id=499963949]
+offset_left = 241.0
+offset_top = 82.0
+offset_right = 548.0
+offset_bottom = 131.0
+text = "Яблоко...
+ В последний раз я его видела в доме"
+label_settings = SubResource("LabelSettings_ig7eq")
+horizontal_alignment = 1
+
+[node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_5pn3r")]
+position = Vector2(778, 377)
+
+[node name="ToHall" type="Area2D" parent="." unique_id=1788435845]
+script = ExtResource("5_83tla")
+next_scene_path = "res://assets/levels/hall/hall.tscn"
+zone_name = "Kitchen2Hall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToHall" unique_id=1571067434]
+position = Vector2(1015, 427)
+shape = SubResource("RectangleShape2D_d6df5")
+debug_color = Color(0.84313726, 0, 0.92156863, 0.48235294)
