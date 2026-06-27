@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dyk2xymsrdxvk" path="res://assets/levels/hall/hall.jpg" id="1_i44t4"]
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_53m2r"]
-[ext_resource type="PackedScene" uid="uid://dc4jfd01kh8dv" path="res://assets/items/apple/apple.tscn" id="4_hxxtw"]
+[ext_resource type="PackedScene" uid="uid://cls10mqyml244" path="res://assets/items/salt/salt.tscn" id="4_atbn6"]
 [ext_resource type="PackedScene" uid="uid://c8uc5oe64kjyp" path="res://common/transition/transition.tscn" id="7_xtsg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2b18"]
@@ -14,13 +14,6 @@ size = Vector2(591.6533, 66)
 position = Vector2(572, 323.00003)
 scale = Vector2(0.89453125, 0.71594685)
 texture = ExtResource("1_i44t4")
-
-[node name="Apple" parent="." unique_id=97196546 instance=ExtResource("4_hxxtw")]
-position = Vector2(808, 404)
-scale = Vector2(1.0389951, 1)
-skew = 0.0017453292
-
-[node name="Sprite2D" type="Sprite2D" parent="Apple" unique_id=603613694]
 
 [node name="RoomBounds" type="StaticBody2D" parent="." unique_id=82712180]
 
@@ -61,3 +54,6 @@ position = Vector2(725, 342)
 next_scene_path = "res://assets/levels/living_room/living_room.tscn"
 target_position = Vector2(100, 400)
 zone_name = "Hall2Living"
+
+[node name="Salt" parent="." unique_id=1790279055 instance=ExtResource("4_atbn6")]
+position = Vector2(889, 450)

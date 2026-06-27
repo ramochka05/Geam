@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cls10mqyml244"]
+
+[ext_resource type="Script" uid="uid://dommf13ip2cv3" path="res://assets/items/salt/salt.gd" id="1_i0jph"]
+[ext_resource type="Texture2D" uid="uid://cj0ikrkrg0hoe" path="res://assets/items/salt/salt.png" id="1_kgn2s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0jph"]
+size = Vector2(62.5, 53)
+
+[node name="Salt" type="Area2D" unique_id=1790279055]
+script = ExtResource("1_i0jph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1710747019]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_i0jph")
+debug_color = Color(0.6132099, 0.5409361, 0.21009508, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2134256300]
+position = Vector2(0.99999905, 4.7683716e-07)
+scale = Vector2(0.0484375, 0.055584736)
+texture = ExtResource("1_kgn2s")

@@ -6,7 +6,7 @@ var current_scale = 0.2
 @onready var inventory = $Inventory 
 @onready var inventory_ui = $InventoryUI 
 # Получаем ссылку на узел спрайта (измените имя, если оно другое)
-@onready var sprite = $Sprite
+@onready var sprite = $Sprite2D
 # Получаем ссылку на форму коллизии
 @onready var collision_shape = $Area2D/CollisionShape2D
 
@@ -62,7 +62,6 @@ func try_interact():
 	# Получаем все Area2D, которые пересекаются с игроком
 	if interaction_area != null:
 		var areas = interaction_area.get_overlapping_areas()
-		print(areas)
 		for area in areas:
 			if area.has_method("interact"):
 				# Дополнительно проверяем, что игрок действительно рядом с этим предметом
