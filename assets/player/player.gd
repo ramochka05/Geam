@@ -13,12 +13,18 @@ var current_scale = 0.2
 @onready var interaction_area: Area2D = $Area2D
 
 func _ready():
+	
+	if GameManager.next_spawn_position != Vector2.ZERO:
+		set_global_position(GameManager.next_spawn_position)
+		GameManager.next_spawn_position = Vector2.ZERO
+	
+	
 	# ВОТ ЭТО САМОЕ ГЛАВНОЕ: 
 	# Соединяем сигнал изменения инвентаря с функцией обновления экрана
 	inventory.inventory_changed.connect(inventory_ui.update_ui.bind(inventory.items))
-	
 	# Обновляем один раз при старте игры
 	inventory_ui.update_ui(inventory.items)
+	
 	
 func _physics_process(delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -64,7 +70,3 @@ func try_interact():
 					area.interact()
 					return # Взаимодействуем только с одним предметом за раз
 					
-
-
-func _on_bad_apple_player_entered() -> void:
-	pass # Replace with function body.
