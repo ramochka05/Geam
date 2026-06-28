@@ -33,4 +33,6 @@ func interact():
 	if player_is_near and next_scene_path != "":
 		print("Переход на сцену: ", next_scene_path)
 		GameManager.next_spawn_position = target_position
+		TransitionAnimation.fade()
+		await TransitionAnimation.on_transition_finished
 		get_tree().change_scene_to_file(next_scene_path)
