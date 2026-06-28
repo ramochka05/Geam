@@ -20,6 +20,7 @@ config/icon="res://common/icon.svg"
 GlobalInventory="*uid://b6dftycnj3q55"
 GameManager="*uid://crxt2qd4xoklm"
 TransitionAnimation="*uid://bu2ec35ayvg0y"
+Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
