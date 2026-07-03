@@ -1,32 +1,46 @@
 extends Area2D
 
-@onready var sprite: Sprite2D = $PNGApple
+# Данные для инвентаря
+@export var item_data: ItemData
+@export var amount: int = 1
 
-var is_collected = false # Наш замок
+@onready var sprite = $PNGApple
 
+var is_collected = false 
+var player_node = null
 
-# Флаг, находится ли игрок в зоне
-var player_is_near = false
+# ВОТ ОНА! Переменная, которую ищет скрипт твоего друга:
+var player_is_near = false 
 
 func _ready():
-	# Подключаем сигналы области к функциям в этом скрипте
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
-func _on_body_entered(_body):
-	# Проверяем, что вошел именно игрок (нужно повесить на игрока группу "player")
-	player_is_near = true
+func _on_body_entered(body):
+	# Если у того, кто подошел, есть инвентарь (это игрок)
+	if "inventory" in body:
+		player_node = body
+		player_is_near = true # Даем сигнал скрипту друга, что игрок рядом
 
-func _on_body_exited(_body):
-	player_is_near = false
+func _on_body_exited(body):
+	if body == player_node:
+		player_node = null
+		player_is_near = false
 
-# Эта функция будет вызываться из главного скрипта или через Input
+# Эту функцию вызывает скрипт игрока твоего друга при нажатии кнопки Е (или другой)
 func interact():
-	if player_is_near:
-		if is_collected: 
-			return
+	if is_collected: 
+		return
 		
-		print("Взаимодействие с предметом!")
+	# Проверяем, вставили ли вы ресурс в Инспектор
+	if item_data != null:
+		print("Подбираем предмет...")
 		is_collected = true
-		print("Яблоко подобрано один раз")
+		
+		# Кладем предмет в инвентарь
+		player_node.inventory.add_item(item_data, amount)
+		
+		# Удаляем яблоко
 		call_deferred("queue_free")
+	else:
+		print("ОШИБКА: Забыли перетащить ресурс ItemData в инспектор!")

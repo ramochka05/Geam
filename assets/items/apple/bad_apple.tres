@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cptqe41wevln2"]
+
+[ext_resource type="Script" uid="uid://djtm0g8ovx1xy" path="res://assets/inventory/item_data.gd" id="1_h6mpe"]
+[ext_resource type="Texture2D" uid="uid://dqwpdwtl0j3xv" path="res://assets/items/apple/bad_apple_sprite.png" id="1_vrbkn"]
+
+[resource]
+script = ExtResource("1_h6mpe")
+name = "Плохое "
+icon = ExtResource("1_vrbkn")
+drop_scene_path = "uid://b88ssyqvyqqd8"
+metadata/_custom_type_script = "uid://djtm0g8ovx1xy"

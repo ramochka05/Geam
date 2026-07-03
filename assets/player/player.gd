@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 var current_scale = 0.2
 
+@export var drop_scene: PackedScene
 @onready var inventory = $Inventory 
 @onready var inventory_ui = $InventoryUI 
 # Получаем ссылку на узел спрайта (измените имя, если оно другое)
@@ -16,6 +17,8 @@ func _ready():
 	# ВОТ ЭТО САМОЕ ГЛАВНОЕ: 
 	# Соединяем сигнал изменения инвентаря с функцией обновления экрана
 	inventory.inventory_changed.connect(inventory_ui.update_ui.bind(inventory.items))
+	
+	inventory_ui.drop_item_requested.connect(_on_drop_item)
 	
 	# Обновляем один раз при старте игры
 	inventory_ui.update_ui(inventory.items)
@@ -68,3 +71,21 @@ func try_interact():
 
 func _on_bad_apple_player_entered() -> void:
 	pass # Replace with function body.
+	
+	
+func _on_drop_item(item_data: ItemData):
+	# 1. Удаляем 1 штуку из инвентаря
+	inventory.remove_item(item_data, 1)
+	
+	# 2. Проверяем, есть ли у предмета путь к сцене выброса
+	if item_data.drop_scene_path != "":
+		# Превращаем текстовый путь в реальную сцену
+		var scene_to_drop = load(item_data.drop_scene_path)
+		var drop = scene_to_drop.instantiate()
+		
+		# Передаем данные и ставим на пол
+		drop.item_data = item_data 
+		drop.global_position = global_position + Vector2(0, 80) 
+		get_parent().add_child(drop)
+	else:
+		print("ОШИБКА: В настройках ресурса " + item_data.name + " не указан путь Drop Scene Path!")
