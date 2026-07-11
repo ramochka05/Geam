@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d1ba4floms5b3"]
+
+[ext_resource type="Script" uid="uid://cy0sx7cdjxl4j" path="res://assets/quest_system/diary/scripts/QuestItem.gd" id="1_mao57"]
+[ext_resource type="Texture2D" uid="uid://bi0l540wh8iub" path="res://assets/quest_system/diary/sprites/sign_quest.png" id="2_s47q6"]
+[ext_resource type="Script" uid="uid://l1jsum31jo3u" path="res://assets/quest_system/diary/scripts/QI.gd" id="3_5apff"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=1591626358]
+offset_right = 282.0
+offset_bottom = 59.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_mao57")
+
+[node name="StatusIcon" type="TextureRect" parent="." unique_id=1201618216]
+clip_contents = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_s47q6")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=889113239]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_5apff")
+
+[node name="Header" type="Label" parent="VBoxContainer" unique_id=693363422]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.10980392, 0.03137255, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+
+[node name="Information" type="Label" parent="VBoxContainer" unique_id=88394730]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.1764706, 0.10980392, 0.03137255, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
