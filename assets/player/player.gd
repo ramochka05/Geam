@@ -7,19 +7,13 @@ var current_scale = 0.2
 @onready var inventory = $Inventory 
 @onready var inventory_ui = $InventoryUI 
 # Получаем ссылку на узел спрайта (измените имя, если оно другое)
-@onready var sprite = $Sprite2D
+@onready var sprite = $Sprite
 # Получаем ссылку на форму коллизии
 @onready var collision_shape = $Area2D/CollisionShape2D
 
 @onready var interaction_area: Area2D = $Area2D
 
 func _ready():
-	
-	if GameManager.next_spawn_position != Vector2.ZERO:
-		set_global_position(GameManager.next_spawn_position)
-		GameManager.next_spawn_position = Vector2.ZERO
-	
-	
 	# ВОТ ЭТО САМОЕ ГЛАВНОЕ: 
 	# Соединяем сигнал изменения инвентаря с функцией обновления экрана
 	inventory.inventory_changed.connect(inventory_ui.update_ui.bind(inventory.items))
@@ -28,7 +22,6 @@ func _ready():
 	
 	# Обновляем один раз при старте игры
 	inventory_ui.update_ui(inventory.items)
-	
 	
 func _physics_process(delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -66,6 +59,7 @@ func try_interact():
 	# Получаем все Area2D, которые пересекаются с игроком
 	if interaction_area != null:
 		var areas = interaction_area.get_overlapping_areas()
+		print(areas)
 		for area in areas:
 			if area.has_method("interact"):
 				# Дополнительно проверяем, что игрок действительно рядом с этим предметом

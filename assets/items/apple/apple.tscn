@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://bstj5qsw46h8h" path="res://assets/items/apple/red_circle.png" id="2_fcuoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mw2ef"]
-radius = 21.0
+radius = 13.0
 
-[node name="Apple" type="Area2D" unique_id=97196546]
+[node name="apple" type="Area2D" unique_id=97196546]
 script = ExtResource("1_pdq0d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=137279065]
-position = Vector2(21, 21)
+position = Vector2(97, 52)
 shape = SubResource("CircleShape2D_mw2ef")
 
 [node name="RedCircleTransparent" type="Sprite2D" parent="." unique_id=629191756]
-position = Vector2(22, 20.999998)
-scale = Vector2(0.056457512, 0.054550167)
+position = Vector2(97.1875, 52.140625)
+scale = Vector2(0.042236295, 0.050231926)
 texture = ExtResource("2_fcuoq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
