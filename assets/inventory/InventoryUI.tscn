@@ -6,22 +6,30 @@
 script = ExtResource("1_lmfoq")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1616145289]
-offset_left = 362.0
-offset_top = 556.0
-offset_right = 799.0
-offset_bottom = 638.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
 color = Color(0.07450981, 0.06666667, 0.011764706, 0.6039216)
 
 [node name="ItemList" type="ItemList" parent="ColorRect" unique_id=16170044]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 10.0
-offset_right = 428.0
-offset_bottom = 76.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/v_separation = 2
 theme_override_font_sizes/font_size = 10
-max_columns = 5
 same_column_width = true
-fixed_column_width = 100
-icon_mode = 0
 fixed_icon_size = Vector2i(32, 32)
+
+[node name="DropButton" type="Button" parent="ColorRect" unique_id=1192773286]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 579.0
+offset_right = 646.0
+offset_bottom = 634.0
+text = "Выбросить"

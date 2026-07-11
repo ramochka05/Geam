@@ -32,3 +32,18 @@ func add_item(item: ItemData, amount: int = 1):
 	# Сохраняем и обновляем
 	GlobalInventory.save_data(items)
 	inventory_changed.emit()
+
+# Функция удаления предмета
+func remove_item(item: ItemData, amount: int = 1):
+	for i in range(items.size()):
+		if items[i]["item"].name == item.name:
+			items[i]["amount"] -= amount
+			
+			# Если количество упало до нуля (или ниже) - удаляем ячейку
+			if items[i]["amount"] <= 0:
+				items.remove_at(i)
+				
+			# Сохраняем и обновляем
+			GlobalInventory.save_data(items)
+			inventory_changed.emit()
+			return

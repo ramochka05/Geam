@@ -15,3 +15,6 @@ class_name ItemData
 
 # Максимальное количество предметов в стаке (если is_stackable = true)
 @export var max_stack_size: int = 99
+
+# Теперь здесь будет не сама сцена, а просто текст с путем к файлу:
+@export_file("*.tscn") var drop_scene_path: String
