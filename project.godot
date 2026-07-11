@@ -21,11 +21,18 @@ GlobalInventory="*uid://b6dftycnj3q55"
 GameManager="*uid://crxt2qd4xoklm"
 TransitionAnimation="*uid://bu2ec35ayvg0y"
 Dialogic="*uid://ds2q0uclmolvu"
+QuestManager="*uid://cn54sm6l4mapa"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"mother": "res://assets/dialogs/mother.dch",
+"player": "res://assets/dialogs/player.dch"
+}
+directories/dtl_directory={
+"timeline_1": "res://assets/dialogs/timeline_1.dtl",
+"timeline_2": "res://assets/dialogs/timeline_2.dtl"
+}
 layout/style_directory={}
 
 [display]
