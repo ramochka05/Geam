@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btc5fgq7itedv" path="res://assets/player/player.gd" id="1_mnirw"]
 [ext_resource type="Texture2D" uid="uid://dgq3hify1vg1b" path="res://assets/player/player_sprite.png" id="2_rac3s"]
+[ext_resource type="Script" uid="uid://buu5ebm36o0mr" path="res://assets/quest_system/diary/scripts/CallingDiary.gd" id="3_d5dr7"]
 [ext_resource type="Script" uid="uid://m2fop5hgvsok" path="res://assets/inventory/inventory.gd" id="3_rac3s"]
 [ext_resource type="PackedScene" uid="uid://u7tcsdm0bwaw" path="res://assets/inventory/InventoryUI.tscn" id="4_tnfoc"]
 
@@ -21,6 +22,7 @@ script = ExtResource("1_mnirw")
 position = Vector2(54, 37)
 scale = Vector2(0.17113549, 0.14969836)
 texture = ExtResource("2_rac3s")
+script = ExtResource("3_d5dr7")
 
 [node name="Inventory" type="Node" parent="." unique_id=1478239550]
 script = ExtResource("3_rac3s")
