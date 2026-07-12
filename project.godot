@@ -20,6 +20,8 @@ config/icon="res://common/icon.svg"
 GlobalInventory="*uid://b6dftycnj3q55"
 Dialogic="*uid://ds2q0uclmolvu"
 QuestManager="*uid://cn54sm6l4mapa"
+GameManager="*uid://crxt2qd4xoklm"
+TransitionAnimation="*uid://bu2ec35ayvg0y"
 
 [dialogic]
 

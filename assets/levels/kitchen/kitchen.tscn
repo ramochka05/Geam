@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bcibtmnjawio0" path="res://assets/levels/kitchen/kitchen.jpg" id="1_crp0g"]
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_5pn3r"]
 [ext_resource type="PackedScene" uid="uid://cagp2sm21boxg" path="res://assets/characters/mother/mother.tscn" id="4_wnebr"]
-[ext_resource type="Script" uid="uid://c6rjk7mccsb5j" path="res://assets/levels/transition.gd" id="5_83tla"]
+[ext_resource type="PackedScene" uid="uid://d2bbun5ybbxfj" path="res://common/transition/transition.tscn" id="5_83tla"]
 [ext_resource type="Script" uid="uid://bwkd8tdv3p0mc" path="res://assets/characters/mother/mother.gd" id="5_ek7yq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pn3r"]
@@ -33,10 +33,7 @@ font = SubResource("FontVariation_kiegy")
 font_color = Color(0, 0, 0, 1)
 outline_size = 5
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6df5"]
-size = Vector2(110.5, 268.5)
-
-[node name="Node2D" type="Node2D" unique_id=1134077883]
+[node name="Kitchen" type="Node2D" unique_id=1134077883]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=370447391]
 position = Vector2(582.6903, 321)
@@ -88,12 +85,8 @@ horizontal_alignment = 1
 [node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_5pn3r")]
 position = Vector2(778, 377)
 
-[node name="ToHall" type="Area2D" parent="." unique_id=1788435845]
-script = ExtResource("5_83tla")
+[node name="ToHall" parent="." unique_id=19305187 instance=ExtResource("5_83tla")]
+position = Vector2(973, 369)
 next_scene_path = "res://assets/levels/hall/hall.tscn"
+target_position = Vector2(300, 350)
 zone_name = "Kitchen2Hall"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ToHall" unique_id=1571067434]
-position = Vector2(1015, 427)
-shape = SubResource("RectangleShape2D_d6df5")
-debug_color = Color(0.84313726, 0, 0.92156863, 0.48235294)

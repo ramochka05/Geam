@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://j5pg8p4ugd2e" path="res://assets/levels/living_room/living_room.jpg" id="1_6gg1q"]
 [ext_resource type="PackedScene" uid="uid://dwxxue464ng7a" path="res://assets/player/player.tscn" id="2_etakd"]
-[ext_resource type="Script" uid="uid://c6rjk7mccsb5j" path="res://assets/levels/transition.gd" id="3_6gg1q"]
+[ext_resource type="PackedScene" uid="uid://d2bbun5ybbxfj" path="res://common/transition/transition.tscn" id="3_6gg1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sw2l"]
 size = Vector2(1152.125, 314)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gg1q"]
-size = Vector2(1145, 141.5)
+size = Vector2(1145, 73)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etakd"]
 size = Vector2(359.82263, 52)
@@ -16,12 +16,9 @@ size = Vector2(359.82263, 52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gdaq"]
 size = Vector2(43.5, 280)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdb14"]
-size = Vector2(156.75, 238.25)
+[node name="LivingRoom" type="Node2D" unique_id=1112863121]
 
-[node name="living_room" type="Node2D" unique_id=1112863121]
-
-[node name="Photo20260315175202" type="Sprite2D" parent="." unique_id=464612286]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=464612286]
 position = Vector2(578.00006, 325.00003)
 scale = Vector2(0.8993928, 0.7191455)
 texture = ExtResource("1_6gg1q")
@@ -34,7 +31,7 @@ position = Vector2(580.9375, 214)
 shape = SubResource("RectangleShape2D_1sw2l")
 
 [node name="Floor" type="CollisionShape2D" parent="RoomBounds" unique_id=540800854]
-position = Vector2(573.5, 681.25)
+position = Vector2(573.5, 702.5)
 shape = SubResource("RectangleShape2D_6gg1q")
 
 [node name="RightWall" type="CollisionShape2D" parent="RoomBounds" unique_id=329561632]
@@ -47,14 +44,10 @@ position = Vector2(6.75, 497)
 shape = SubResource("RectangleShape2D_3gdaq")
 
 [node name="Player" parent="." unique_id=505350250 instance=ExtResource("2_etakd")]
-position = Vector2(90, 396)
+position = Vector2(208, 375)
 
-[node name="ToHall" type="Area2D" parent="." unique_id=650211985]
-script = ExtResource("3_6gg1q")
+[node name="Transition" parent="." unique_id=19305187 instance=ExtResource("3_6gg1q")]
+position = Vector2(47, 392)
 next_scene_path = "res://assets/levels/hall/hall.tscn"
+target_position = Vector2(660, 360)
 zone_name = "Living2Hall"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ToHall" unique_id=52972490]
-position = Vector2(96, 449)
-shape = SubResource("RectangleShape2D_kdb14")
-debug_color = Color(0.84313726, 0, 0.92156863, 0.48235294)
